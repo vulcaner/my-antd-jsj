@@ -1,0 +1,62 @@
+@import '~antd/dist/antd.min.css';
+@import '~animate.css/animate.min.css';
+#contenter{
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+  align-content: center;
+  border-top: 1px solid #eeeeee;
+  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url(./imgs/bg.png);
+  background-size: cover;
+}
+/* 缩放 */
+#scale{
+  width:1920px;
+  height: 1080px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .53s;
+  transition: all .5s;
+  background-color: #fff;
+}
+#pageContent,#root{
+  width: 100%;
+  height: 100%;
+}
+.fontS20{
+  font-size: 20px;
+}
+.paddingLR20{
+  padding-left: 20px;
+}
+.logo{
+  max-height: 40px;
+}
+.rt{
+  float: right;
+}
+.lf{
+  float: left;
+}
+.clear:after {
+  clear:both;
+  content:'.';
+  display:block;
+  width: 0;
+  height: 0;
+  visibility:hidden;
+}
+.content{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.mapChina{
+  width: 100%;
+  height: 100%;
+  border: 2px solid blue;
+}
