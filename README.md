@@ -1,15 +1,9 @@
 #by LXC 
-
+#静态资源:server=>window.dominContext.staticPath + '';
+#静态资源压缩:src=>import logo from '../../imgs/logo.svg';
+yarn start=>run
 yarn  build =>Creating an optimized production build...
-
-
-
-
-
-
-
-
-
+###
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
