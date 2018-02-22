@@ -10,10 +10,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      // menu控制
-      collapsed:false,
-      // content控制
-      pagekey:1
+      collapsed:false,// menu控制
+      pagekey:1// content控制
     }
   }
   componentWillReceiveProps(){}
