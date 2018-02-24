@@ -24,8 +24,6 @@
 function randomData() {
     return Math.round(Math.random()*6000);
 }
-
-
 const DataCreater = {
     mapOption:(arrData)=>{
         return {

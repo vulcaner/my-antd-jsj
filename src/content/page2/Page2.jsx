@@ -39,7 +39,7 @@ class Page2 extends  React.Component{
     }
     render(){
         return (
-            <div id="pageContent">
+            <div id="pageContent" className="animated rotateIn">
                 <BaseMap className="mapChina" option={this.state.mapOption} mapName={"china"}/> 
                 {/* 测试伪类 */}
                 {/* <div className={`${style.a} ${style.b}`}>hover</div> */}

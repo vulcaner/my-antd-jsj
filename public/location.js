@@ -16,7 +16,7 @@
             
         }
     };
-    // 计算缩放值
+    //计算缩放值
     win.recalc=(w)=>{
         let parent=document.getElementById("contenter");
         let parentWidth=parseFloat(win.getComputedStyle(parent).getPropertyValue("width"));

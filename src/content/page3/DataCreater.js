@@ -1,580 +1,90 @@
-import R from 'ramda';
-const geoCoordMap = {
-    // -18~360-18之间
-    '陆港集团': [120.1005730000,29.3471330000],
-}
-//map
-function mapDataToLineData(arrData) {
-  let res = [];
-  let toCood = geoCoordMap["陆港集团"];//arr
-  for (let i = 0; i < arrData.length; i++) {
-      if(arrData[i].isAnimate){
-        let fromCood = arrData[i].lal;//arr
-        res.push({
-            fromName: arrData[i].name,
-            toName: "陆港集团",
-            coords: [fromCood, toCood]
-        });
-      }
-   
-  }
-  return res;
-}
-//map
-function mapDataToScatterData(arrData) {
-  let res = [];
-  for (let i = 0; i < arrData.length; i++) {
-    let cood = arrData[i].lal;//arr[经度，纬度，value大小]
-    res.push({
-      name: arrData[i].name,
-      value:cood.concat(arrData[i].value)
-    });
-  }
-  return res;
+function randomData(data) {
+    return parseInt(Math.random()*(6000-0+1)+0);
 }
 const DataCreater = {
-    inAmount:(arrData,legendData,monthData)=>{
-        return {
-            color: ['#42b61f', '#4e6f90'],
-            tooltip: {
-                trigger: 'axis'
-            },
-            toolbox: {
-                show: false
-            },
-            legend: {
-                show: true,
-                right: 15,
-                top:0,
-                textStyle: {
-                    color: '#fff',
-                    fontSize: 11,
-                    fontWeight: 'normal',
-                    fontFamily: '微软雅黑'
-                },
-                itemHeight:6,
-                itemGap:25,
-                data:[
-                    {
-                        name:legendData[0],
-                        // icon: 'line'
-                    },
-                     {
-                        name:legendData[1],
-                        // icon: 'line'
-                    }
-                ]
-            },
-            grid: {
-                show: false,
-                left: "1%",
-                right: "5%",
-                bottom: 0,
-                top:"12%",
-                containLabel: true,
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                data:monthData,
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    interval:0,
-                    color:"#fff",
-                    // fontSize:12
-                },
-                axisTick:{
-                    alignWithLabel:true,
-                    interval:0
-                },
-                splitLine: {
-                    show: false
-                },
-            },
-            yAxis: {
-                type: 'value',
-                // data:[2000,4000,8000,10000,12000],
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    color:"#fff",
-                    // fontSize:12
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                }
-            },
-            series: [
-                {
-                    name:legendData[0],
-                    type: 'line',
-                    itemStyle: {
-                        emphasis: {
-                            color: '#42B61F'
-                        }
-                    },
-                    data: arrData[0]
-                },
-                {
-                    name:legendData[1],
-                    type: 'line',
-                    itemStyle: {
-                        emphasis: {
-                            color: '#4e6f90'
-                        }
-                    },
-                    data: arrData[1]
-                }   
-            ]
-        }
-    },
-    boxNumber:(arrData,legendData,monthData)=>{
-        return {
-            color: ['#42b61f', '#4e6f90','#00ffff'],
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                show: true,
-                right: 15,
-                top:0,
-                textStyle: {
-                    color: '#fff',
-                    fontSize: 11,
-                    fontWeight: 'normal',
-                    fontFamily: '微软雅黑'
-                },
-                itemHeight:6,
-                itemGap:25,
-                data: [
-                    {
-                        name:legendData[0],
-                        // icon: 'line'
-                    },
-                     {
-                        name:legendData[1],
-                        // icon: 'line'
-                    },
-                    {
-                        name:legendData[2],
-                        // icon: 'line'
-                    }
-                ]
-            },
-            grid: {
-                show: false,
-                left: "1%",
-                right: "5%",
-                bottom: 0,
-                top:"12%",
-                containLabel: true,
-            },
-            toolbox: {
-                show: false
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                data:monthData,
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    interval:0,
-                    color:"#fff",
-                    // fontSize:12
-                },
-                axisTick:{
-                    alignWithLabel:true,
-                    interval:0
-                },
-                splitLine: {
-                    show: false
-                },
-            },
-            yAxis: {
-                type: 'value',
-                // data:[2000,4000,8000,10000,12000],
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    color:"#fff",
-                    // fontSize:12
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                }
-            },
-            series: [
-                {
-                    name:legendData[0],
-                    type: 'line',
-                    itemStyle: {
-                        emphasis: {
-                            color: '#42B61F'
-                        }
-                    },
-                    data: arrData[0]
-                },
-                {
-                    name: legendData[1],
-                    type: 'line',
-                    itemStyle: {
-                        emphasis: {
-                            color: '#4e6f90'
-                        }
-                    },
-                    data: arrData[1]
-                },
-                {
-                    name:legendData[2],
-                    type: 'line',
-                    itemStyle: {
-                        emphasis: {
-                            color: 'gray'
-                        }
-                    },
-                    data: arrData[2]
-                }
-            ]
-
-        }
-    },
-    threeInAmount:(arrData,xAxisData)=>{
+    mapOption:(arrData)=>{
         return {
             tooltip: {
-                trigger: 'axis'
+                trigger: 'item'
             },
-            toolbox: {
-                show: false
-            },
-            legend: {
-                show: false,
-                right: 0,
-                top:0,
-                textStyle: {
-                    color: '#fff',
-                    fontSize: 11,
-                    fontWeight: 'normal',
-                    fontFamily: '微软雅黑'
+            visualMap: {
+                type:"piecewise",
+                itemSymbol :'rect',
+                left: '20%',
+                top: '90%',
+                min: 0,
+                max:6000,
+                splitNumber: 6,
+                pieces :[
+                    {min: 0, max:1000},
+                    {min:1000, max: 2000},
+                    {min:2000, max: 3000},
+                    {min:3000, max: 4000},
+                    {min:4000, max: 5000},
+                    {min:5000, max: 6000},
+                ],
+                inverse:true,
+                itemGap:0,
+                itemWidth: 50,
+                // align:"right",
+                text: ['0','6000'], 
+                orient:'horizontal',          // 文本，默认为数值文本
+                // showLabel:true,
+                calculable: true,
+                inRange: {
+                    color: ['#163d71','#3f6496','#6189bf','#88a9d5','#afc0d7','#fff']
                 },
-                itemHeight:6,
-            },
-            grid: {
-                show: false,
-                left: "1%",
-                right: '4%',
-                bottom: 0,
-                top:"12%",
-                containLabel: true,
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                data: xAxisData,
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    interval:0,
-                    color:"#fff",
-                    // fontSize:12
-                },
-                axisTick:{
-                    alignWithLabel:true,
-                    interval:0
-                },
-                splitLine: {
-                    show: false
-                },
-            },
-            yAxis: {
-                type: 'value',
-                // data:[2000,4000,8000,10000,12000],
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    color:"#fff",
-                    // fontSize:12
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
+                textStyle:{
+                    color:'#fff',
                 }
-            },
-            series: [
-                    {
-                        type: 'line',
-                        name:'',
-                        itemStyle: {
-                            normal:{
-                                color:'#42b61f',
-                                borderColor:'#42b61f'
-                            },
-                            emphasis: {
-                                color: '#000'
-                            }
-                        },
-                        data:arrData
-                    },
-                    
-            ]
-        }
-    },
-    threeBoxNumber:(arrData,xAxisData)=>{
-        return {
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                show: false,
-                right: 0,
-                top:0,
-                textStyle: {
-                    color: '#fff',
-                    fontSize: 11,
-                    fontWeight: 'normal',
-                    fontFamily: '微软雅黑'
-                },
-                itemHeight:6,
-            },
-            grid: {
-                show: false,
-                left: "1%",
-                right:'4%',
-                bottom: 0,
-                top:"12%",
-                containLabel: true,
-            },
-            toolbox: {
-                show: false
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap:true,
-                data:xAxisData,
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    interval:0,
-                    color:"#fff",
-                    // fontSize:12
-                },
-                axisTick:{
-                    alignWithLabel:true,
-                    interval:0
-                },
-                splitLine: {
-                    show: false
-                },
-            },
-            yAxis: {
-                type: 'value',
-                // data:[2000,4000,8000,10000,12000],
-                axisLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                },
-                axisLabel:{
-                    color:"#fff",
-                    // fontSize:12
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: '#394C5D'
-                    }
-                }
-            },
-            series: [
-                {
-                    name: '',
-                    type: 'line',
-                    itemStyle: {
-                        normal:{
-                            color:"#00ffff",
-                            borderColor:'#4e6f90' 
-                        },
-                        emphasis: {
-                            color: '#000'
-                        }
-                    },
-                    data: arrData
-                },
-                
-            ]
-
-        }
-    },
-    createMapOption: (arrData) => {
-        return {
-            graphic: {
-                elements:[
-                    {
-                        type: 'image',
-                        id: 'location',
-                        zlevel: 5,
-                        bounding: 'raw',
-                        // 定位左上角经纬度
-                        //[-18, 90],
-                        // 定位右下角经纬度
-                        //[180, -60]
-                        //--图片宽高/2
-                        left: ((geoCoordMap["陆港集团"][0] + 18) / 198 * 0.55-15/1104)*100 + "%",
-                        top: ((90 - geoCoordMap["陆港集团"][1]) /150-30/700)*100 + "%",
-                        style: {
-                            image: window.dominContext.staticPath + '/assets/images/start/location.png',
-                            width: 30,
-                            height: 30
-                        },
-                    },
-                    {
-                        type: 'text',
-                        id:'locationName',
-                        zlevel:6,
-                        bounding: 'all',
-                        // 定位左上角经纬度
-                        //[-18, 90],
-                        // 定位右下角经纬度
-                        //[180, -60]
-                        //-字体宽高
-                        left: ((geoCoordMap["陆港集团"][0] + 18) / 198 * 0.55-12/1104)*100 + "%",
-                        top: ((90 - geoCoordMap["陆港集团"][1]) /150- 22/700)*100 + "%",
-                        style: {
-                            text:'义乌',
-                            fill:'#ffffff'
-                        },
-                    }
-                ]
             },
             geo: [
                 {
-                    map: 'world',
-                    left: "1%", top: 0, right: "45%", bottom: 0,
-                    boundingCoords: [
-                        // 定位左上角经纬度
-                        [-18, 90],
-                        // 定位右下角经纬度
-                        [180, -60]
-                    ],
+                    map: 'china',
                     silent: true,
-                    itemStyle: {
-                        normal: {
-                            areaColor: '#192f4a',
-                            borderColor: '#ccc',
-                            // shadowColor:'#ccc'
-                            // shadowBlur:5,
-                            opacity:0.6
-                        }
-                    },
                     regions: [
                         {
-                        name: 'China',
-                        itemStyle: {
-                            normal: {
-                                areaColor: '#ccc',
-                                shadowBlur: 0,
-                                opacity:0.5
+                            name: '南海诸岛',
+                            itemStyle: {
+                                normal: {
+                                    areaColor:'rgba(73,95,127,0.8)',
+                                    borderColor: '#fff',
+                                    shadowColor:'#000',
+                                    shadowBlur:10,
+                                    opacity:0.6
+                                }
                             }
                         }
-                        }
                     ]
-                },
-                {
-                    map: 'world',
-                    left: "55%", top: 0, right: 0, bottom: 0,
-                    boundingCoords: [
-                        // 定位左上角经纬度
-                        [-180, 90],
-                        // 定位右下角经纬度
-                        [-18, -60]
-                    ],
-                    silent: true,
-                    itemStyle: {
-                        normal: {
-                            areaColor: '#192f4a',
-                            borderColor: '#ccc',
-                            // shadowColor:'#ccc'
-                            // shadowBlur:5,
-                            opacity:0.6
-                        }
-                    }
                 }
             ],
-            tooltip : {
-                show:false,
-                trigger: 'item'
-            },
             series: [
-                //线与动画
+                //单点2
                 {
-                    type: 'lines',
-                    zlevel: 1,
-                    effect: {
-                        show: true,
-                        period: 10,
-                        //symbol:'pin',
-                        symbol: 'image://' + window.dominContext.staticPath + '/assets/images/start/rock.png',
-                        // symbolSize:[8,10],
-                        symbolSize:[9,20],
-                        // trailLength:0.2,
-                        // color:'#FF7800',
-                        loop:true
-                    },
-                    lineStyle: {
-                        normal: {
-                            color: '#297b13',
-                            width: 1,
-                            curveness: 0.2,
-                            type: 'dotted',
-                            opacity:0.5
-                        }
-                    },
-                    data: mapDataToLineData(arrData)
-                },
-                //散点
-                {
-                    zlevel:2,
+                    name: '单点',
                     type: 'scatter',
+                    zlevel:2,
                     coordinateSystem: 'geo',
-                    // symbol:'pin',
-                    symbol: 'image://' + window.dominContext.staticPath + '/assets/images/common/pin.png',
+                    data: [
+                        {name:"北京",value:[116.40,39.93,100]},
+                        {name:"上海",value:[121.48,31.22,100]},
+                        {name:"深圳",value:[114.07,22.62,100]},
+                        {name:"钓鱼岛",value:[123.481151,25.750151,100]}
+                    ],
                     symbolSize: function (val) {
-                        //concat=[经度，纬度，value]
-                        return val[2];
+                        return val[2] / 10;
                     },
-                    symbolOffset: [0, 0],
                     label: {
                         normal: {
-                            show: false,
                             formatter: '{b}',
-                            position: 'right',
-                            color:'#fff'
+                            position: 'top',
+                            show: true,
+                            color:"#fff",
+                            fontSize:16,
+                            textBorderColor :"#000",
+                            textBorderWidth :5,
+                            textshadowColor:"#000",
+                            textshadowBlur :10,
                         },
                         emphasis: {
                             show: true
@@ -582,347 +92,115 @@ const DataCreater = {
                     },
                     itemStyle: {
                         normal: {
-                            color: "#ff7200"
+                            color:"#fff",
+                            borderColor :'#fff',
+                            shadowBlur: 10,
+                            borderWidth:2,
+                            shadowColor: '#fff'
                         }
                     },
-                    data: mapDataToScatterData(arrData)
-                }
-            ]
-        };
-    },
-    goodsPercentPie:() => {
-        return {
-            type: "pie",
-            colors: ["#3e5477","#062c6a","#0054d5","#2874e5","#5497fb","#8bb7f9","#527f34","#c3ddb1","#f1af81","#fbd764","#5a9ba3"],
-            radius: 85,
-            labelRadius:1,
-            alpha:0.7,
-            top:"5%",
-            borderAlpha:0,
-            pullOutRadius: "10%",
-            pulledField: 'pulled',
-            pullOutEffect:'elastic',
-            valueField: "value",
-            titleField: "title",
-            color: '#ffffff',
-            labelText: '[[title]]\n[[value]]%',
-            labelTickColor: '#ffffff',
-            labelTickAlpha: 0.3,
-            fontSize: 12,
-            fontFamily:"微软雅黑",
-            outlineAlpha: 0.3,
-            depth3D: 20,
-            balloonText: "[[title]]<br><span style='font-size:14px'><b>[[value]]%</b></span>",
-            angle: 50,
-            startDuration: 0,
-            export: {
-              enabled: true
-            },
-            legend: {
-                enabled:false,
-                color: '#ffffff',
-                position: 'right',
-                fontSize:14,
-                valueText: "[[close]]",
-                valueWidth: 60,
-                // width: 100,
-                verticalGap:0
-            }
-        }
-    },
-    goodsPercent:(arrData,legendData)=>{
-        return {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },    
-            legend: {
-                textStyle:{
-                    color:'#fff',
-                    fontSize:16,
-                    fontFamily:'微软雅黑'
                 },
-                top:8,
-                right:0,
-                itemGap:20,
-                data: [
-                    {
-                        name:legendData[0],
-                        icon:'rect'
-                    },
-                    {
-                        name:legendData[1],
-                        icon:'rect'
-                    }
-                ]
-            },
-            grid: {
-                left:0,
-                bottom:0,
-                top:'10%',
-                right:0,
-                containLabel: true
-            },
-            yAxis: {
-                type: 'category',
-                position: 'top',
-                inverse:true,
-                axisLine: {
-                    lineStyle: {
-                        color:'transparent',
-                    }
-                },
-                splitLine: { show: false },
-                axisTick: { show: false },
-                axisLabel: { textStyle: { color: '#fff', fontSize:16 } },
-                data: arrData.map(item => item.name)
-            },
-            xAxis: {
-                show:false,
-                type: "value",
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: { show: false },
-                axisLabel: { show: false },
-                splitLine: { show: false }
-            },
-            series: [
+                //点图1
                 {
-                    type: 'bar',
-                    name:legendData[0],
-                    // barWidth:12,
-                    barGap:'10%',
-                    // barCategoryGap:'10%',
-                    legendHoverLink: true,
-                    itemStyle: {
-                        normal: {
-                            color:{
-                                type:'linear',
-                                x:0,
-                                y:0,
-                                X2:0,
-                                y2:1,
-                                colorStops: [{
-                                    offset: 0, color: '#42b61f'
-                                }, {
-                                    offset: 1, color: '#a3d494'
-                                }],
-                                globalCoord: false
-                            }
-                        }
-                    },
+                    name: "图形点",
+                    zlevel:1,
+                    type: 'scatter',
+                    coordinateSystem: 'geo',
+                    symbol: 'image://' + window.dominContext.staticPath + '/assets/images/pin.png',
+                    symbolOffset: [0,"-35%"],
+                    symbolSize: [76,91],
                     label: {
                         normal: {
                             show: true,
-                            position: 'right',
-                            textStyle:{
-                                color:'#fff',
-                                fontSize:12,
-                                fontFamily:'微软雅黑'
-                            }
-                        }
-                    
+                            formatter: function(obj){
+                                return obj.value[2].toLocaleString("en-US")
+                            },
+                            position:['50%','30%'],
+                            align:"center",
+                            color:'#fff',
+                            fontFamily:"Arial",
+                            fontWeight:"bold",
+                            fontSize:19,
+                        },
+                     
                     },
-                    data: arrData.map(item =>{return parseInt(item.todayYear)})
-                },
-                {
-                    type: 'bar',
-                    name:legendData[1],
-                    // barWidth:12,
-                    barGap:'10%',
-                    // barCategoryGap:'10%',
-                    legendHoverLink: true,
-                    itemStyle: {
-                        normal: {
-                            color:{
-                                type:'linear',
-                                x:0,
-                                y:0,
-                                X2:0,
-                                y2:1,
-                                colorStops: [{
-                                    offset: 0, color: '#1998AF' // 0% 处的颜色
-                                }, {
-                                    offset: 1, color: '#00e4e5' // 100% 处的颜色
-                                }],
-                                globalCoord: false
-                            }
-                        }
-                    },
-                    
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'right',
-                            textStyle:{
-                                color:'#fff',
-                                fontSize:12,
-                                fontFamily:'微软雅黑'
-                            }
-                        }
-                    },
-                    data: arrData.map(item => {return parseInt(item.lastYear)})
-                }
-            ],
-            animationEasing: 'elasticOut',
-            animationDelayUpdate: function (idx) {
-                return idx * 50;
-            }
-        };
-    },
-    inOutTop10:(arrData,legendData)=>{
-        return {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },    
-            legend: {
-                textStyle:{
-                    color:'#fff',
-                    fontSize:16,
-                    fontFamily:'微软雅黑'
-                },
-                top:10,
-                right:0,
-                itemGap:25,
-                data: [
-                    {
-                        name:legendData[0],
-                        icon:'rect'
-                    },
-                    {
-                        name:legendData[1],
-                        icon:'rect'
-                    }
-                ]
-            },
-            grid: {
-                left:0,
-                bottom:0,
-                top:'10%',
-                right:55,
-                containLabel: true
-            },
-            yAxis: {
-                type: 'category',
-                inverse:true,
-                position: 'top',
-                axisLine: {
-                    lineStyle: {
-                        color:'transparent',
-                    }
-                },
-                axisTick: { show: false },
-                axisLabel: { textStyle: { color: '#fff', fontSize:18 } },
-                data: arrData.map(item => item.name)
-            },
-            xAxis: {
-                show:false,
-                type: "value",
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: { show: false },
-                axisLabel: { show: false },
-                splitLine: { show: false },
-            },
-            series: [
-                {
-                    type: 'bar',
-                    name:legendData[0],
-                    // barWidth:12,
-                    barGap:'10%',
-                    // barCategoryGap:'12%',
-                    legendHoverLink: true,
-                    itemStyle: {
+                    itemStyle:{
                         normal:{
-                            color:{
-                                type:'linear',
-                                x:0,
-                                y:0,
-                                X2:0,
-                                y2:1,
-                                colorStops: [{
-                                    offset: 0, color: '#42b61f' // 0% 处的颜色
-                                }, {
-                                    offset: 1, color: '#a3d494' // 100% 处的颜色
-                                }],
-                                globalCoord: false
-                            }
-                        }
+                            opacity :1,
+                        }  
                     },
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'right',
-                            textStyle:{
-                                color:'#fff',
-                                fontFamily:'微软雅黑',
-                                fontSize:12
-                            }
-                        }
-                    
-                    },
-                    data: arrData.map(item => item.in)
+                    data: [
+                        {name:'上海',value:[121.48,31.22,3333]},
+                        {name:'武汉',value:[114.31,30.52,5555]}
+                    ]
                 },
+                //区域    
                 {
-                    type: 'bar',
-                    name:legendData[1],
-                    // barWidth:12,
-                    barGap:'10%',
-                    // barCategoryGap:'12%',
-                    legendHoverLink: true,
-                    itemStyle: {
-                        normal: {
-                            color:{
-                                type:'linear',
-                                x:0,
-                                y:0,
-                                X2:0,
-                                y2:1,
-                                colorStops: [{
-                                    offset: 0, color: '#1998AF' // 0% 处的颜色
-                                }, {
-                                    offset: 1, color: '#00e4e5' // 100% 处的颜色
-                                }],
-                                globalCoord: false
-                            }
-                        }
-                    },
-                    
-                    label: {
-                        normal: {
+                    name: 'iphone5',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label:{
+                        emphasis: {
                             show: true,
-                            position: 'right',
-                            textStyle:{
-                                color:'#fff',
-                                fontFamily:'微软雅黑',
-                                fontSize:12
-                            }
+                            color:"#fff"
                         }
-                    
                     },
-                    data: arrData.map(item => item.out)
-                }
+                    itemStyle:{
+                        normal:{
+                            color:"#fff",
+                            borderColor:"#040404",
+                            shadowBlur:5,
+                            shadowColor:"#040404"
+                        },
+                    },
+                    data:[
+                        {name: '北京',value: randomData() },
+                        {name: '天津',value: randomData() },
+                        {name: '上海',value: randomData() },
+                        {name: '重庆',value: randomData() },
+                        {name: '河北',value: randomData() },
+                        {name: '河南',value: randomData() },
+                        {name: '云南',value: randomData() },
+                        {name: '辽宁',value: randomData() },
+                        {name: '黑龙江',value: randomData() },
+                        {name: '湖南',value: randomData() },
+                        {name: '安徽',value: randomData() },
+                        {name: '山东',value: randomData() },
+                        {name: '新疆',value: randomData() },
+                        {name: '江苏',value: randomData() },
+                        {name: '浙江',value: randomData() },
+                        {name: '江西',value: randomData() },
+                        {name: '湖北',value: randomData() },
+                        {name: '广西',value: randomData() },
+                        {name: '甘肃',value: randomData() },
+                        {name: '山西',value: randomData() },
+                        {name: '内蒙古',value: randomData() },
+                        {name: '陕西',value: randomData() },
+                        {name: '吉林',value: randomData() },
+                        {name: '福建',value: randomData() },
+                        {name: '贵州',value: randomData() },
+                        {name: '广东',value: randomData() },
+                        {name: '青海',value: randomData() },
+                        {name: '西藏',value: randomData() },
+                        {name: '四川',value: randomData() },
+                        {name: '宁夏',value: randomData() },
+                        {name: '海南',value: randomData() },
+                        {name: '台湾',value: randomData() },
+                        {name: '香港',value: randomData() },
+                        {name: '澳门',value: randomData() }
+                    ]
+                },
             ],
-            animationEasing: 'elasticOut',
+            animationEasing: 'backIn',
             animationDuration: function (idx) {
                 // 越往后的数据延迟越大
-                return idx * 300;
+                return idx * 500;
             },
             animationDelayUpdate: function (idx) {
-                return idx * 50;
+                return idx * 100;
             }
-        };
+        }
     }
 }
 export default DataCreater;

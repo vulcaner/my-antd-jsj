@@ -1,4 +1,3 @@
-import R from 'ramda';
 const geoCoordMap = {
     // -18~360-18之间
     '陆港集团': [120.1005730000,29.3471330000],

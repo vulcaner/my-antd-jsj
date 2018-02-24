@@ -1,8 +1,9 @@
 // import React, { Component } from 'react';
 import React from 'react';
 import '../../index.css';
-// import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
-// import DataCreater from './DataCreater';
+import BaseMap from '../../components/BaseMap';
+import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
+import DataCreater from './DataCreater';
 // import $ from 'jquery';
 
 class Page3 extends  React.Component{
@@ -11,23 +12,7 @@ class Page3 extends  React.Component{
     // }
     componentWillReceiveProps(){}
     componentDidMount(){
-        // var self=this;
-        // self.serverRequest=$.ajax({
-        //     type:'GET',
-        //     url: window.locationConfig.controlPages.start.address,
-        //     dataType:"json", 
-        //     data : {},
-        //     crossDomain: true, 
-        //     contentType:"application/json",  
-        //     success:function(data){
-        //         var sourse=JSON.parse(JSON.stringify(data));
-        //         // console.log(sourse.hits.hits[0]._source);
-        //         self.upData(sourse.hits.hits[0]._source);
-        //     },
-        //     error:function(e){
-        //         console.log(e);
-        //     }
-        // })
+        console.log(logo)
     }
     componentWillUnmount() {
         //clearInterval(this.timer)
@@ -35,11 +20,8 @@ class Page3 extends  React.Component{
     }
     render(){
         return (
-            <div id="pageContent" style={{border: '2px solid red'}}>
-               page3
-                {/* 测试伪类 */}
-                {/* <div className={`${style.a} ${style.b}`}>hover</div> */}
-                {/* <div className={style.a+" "+style.b}>hover</div> */}
+            <div id="pageContent" className="animated rollIn">
+                <BaseMap style={{width:'100%',height:"100%"}} option={DataCreater.mapOption()} mapName={"china"}/>
             </div>
         )
     }
