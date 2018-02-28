@@ -60,3 +60,15 @@
   height: 100%;
   border: 2px solid blue;
 }
+.count{
+ font-size: 30px;
+ font-weight: bold;
+}
+.ring{
+  position: absolute;
+  left:0;
+  top:100px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+}

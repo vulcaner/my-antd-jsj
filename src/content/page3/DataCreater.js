@@ -1,4 +1,4 @@
-function randomData(data) {
+function randomData() {
     return parseInt(Math.random()*(6000-0+1)+0);
 }
 const DataCreater = {
