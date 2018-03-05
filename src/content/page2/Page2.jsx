@@ -5,6 +5,7 @@ import BaseMap from '../../components/BaseMap';
 // import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 import DataCreater from './DataCreater';
 // import $ from 'jquery';
+import { Carousel } from 'antd';
 
 class Page2 extends  React.Component{
     constructor(props){
@@ -39,11 +40,16 @@ class Page2 extends  React.Component{
     }
     render(){
         return (
-            <div id="pageContent" className="animated rotateIn">
+            <div id="pageContent" className="animated rotateIn" style={{position:'relative'}}>
                 <BaseMap className="mapChina" option={this.state.mapOption} mapName={"china"}/> 
-                {/* 测试伪类 */}
-                {/* <div className={`${style.a} ${style.b}`}>hover</div> */}
-                {/* <div className={style.a+" "+style.b}>hover</div> */}
+                <div className="carousel">
+                    <Carousel autoplay>
+                        <div>1111</div>
+                        <div>2222</div>
+                        <div>3333</div>
+                        <div>4444</div>
+                    </Carousel>
+                </div>
             </div>
         )
     }
