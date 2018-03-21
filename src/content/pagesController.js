@@ -1,8 +1,7 @@
-// content管理
 import Page1 from  "./page1/Page1";
 import Page2 from  "./page2/Page2";
 import Page3 from  "./page3/Page3";
-const pagesController=[//对应menu顺序
+const pagesController=[
     {
         id: 1,
         widgetName:'page1',

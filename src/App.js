@@ -34,9 +34,10 @@ class App extends Component {
        }
   }
   menuControll=(page)=>{
-    this.setState({pagekey:page.key})
+    let pagekey=page.key;
+    this.setState({pagekey});
   }
-   // 获得当前page content
+   // 获得当前content
    getSinglePage=(pkey)=>{
      let child=pagesController[pkey-1].pageComponent;
      return React.createElement(child);
@@ -119,5 +120,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

@@ -9,9 +9,15 @@
 	justify-content: center;
 	align-items: center;
   align-content: center;
-  border-top: 1px solid #eeeeee;
+  border-top: 24px solid #f2f2f2;
+  border-bottom: 24px solid #f2f2f2;
+  border-left: 16px solid #f2f2f2;
+  border-right: 16px solid #f2f2f2;
+  background-color: #fff;
+  
   background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url(./imgs/bg.png);
   background-size: cover;
+  
 }
 /* 缩放 */
 #scale{
