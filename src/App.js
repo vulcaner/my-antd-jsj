@@ -10,18 +10,36 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
+      scale:1,
       collapsed:false,// menu控制
       pagekey:1// content控制
     }
   }
+  componentWillMount(){
+   this.autoScale();
+  }
+  // 自动获取缩放值
+  autoScale=()=>{
+    let clientW=document.body.clientWidth;
+    let clientH=document.body.clientHeight;
+    let scaleByWidth=(clientW-200)*0.88/1920;//左侧导航width 200
+    let scaleByHeight=(clientH-64)*0.88/1082;//顶部导航height 64
+    let scale=scaleByWidth>scaleByHeight?scaleByHeight:scaleByWidth;
+    this.setState({scale});
+  }
   componentWillReceiveProps(){}
   componentDidMount(){
+    // 监听window窗口变化
+    window.addEventListener('resize', this.autoScale);
   }
-  componentWillUnmount(){}
+  componentWillUnmount(){
+    // 组件注销时,移除window的resize事件监听,释放浏览器内存
+    window.removeEventListener('resize',this.autoScale);
+  }
   toggleMenu=()=>{
     this.setState({collapsed:!this.state.collapsed})
   }
-  handleFullScreen=(e)=>{
+  handleFullScreen=()=>{
       let element=document.getElementById('pageContent');
       if(element.requestFullscreen) {
         element.requestFullscreen();
@@ -37,8 +55,8 @@ class App extends Component {
     let pagekey=page.key;
     this.setState({pagekey});
   }
-   // 获得当前content
-   getSinglePage=(pkey)=>{
+  // 获得当前content
+  getSinglePage=(pkey)=>{
      let child=pagesController[pkey-1].pageComponent;
      return React.createElement(child);
   }
@@ -99,7 +117,17 @@ class App extends Component {
           {/* content>page* */}
           <Content id="contenter">
               {/* 缩放元素 */}
-              <div id='scale'>
+              <div 
+                  id='scale' 
+                  style={
+                    {
+                      transform:`scale(${this.state.scale})`,
+                      WebkitTrasform:`scale(${this.state.scale})`,
+                      msTransform:`scale(${this.state.scale})`,
+                      //WebkitTransition: 'all .5s', // note the capital 'W' here
+                      //msTransition: 'all .5s' // 'ms' is the only lowercase vendor prefix
+                    }
+                  }> 
                 {this.getSinglePage(this.state.pagekey) }
               </div>
                 {/* {
