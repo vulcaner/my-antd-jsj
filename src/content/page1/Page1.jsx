@@ -6,6 +6,7 @@ import Ring from '../../components/Ring';
 import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 // import DataCreater from './DataCreater';
 // import $ from 'jquery';
+import { Switch,Icon} from 'antd';
 
 class Page1 extends  React.Component{
     constructor(props){
@@ -47,6 +48,9 @@ class Page1 extends  React.Component{
         this.timer&&clearInterval(this.timer)
         // this.serverRequest&&this.serverRequest.abort();
     }
+    onChange=(checked)=>{
+        console.log(`switch to ${checked}`);
+    }
     render(){
         return (
             <div id="pageContent" style={{position:"relative"}}>
@@ -70,6 +74,8 @@ class Page1 extends  React.Component{
                     borderColor="yellow"
                     borderWidth={2}
                 />
+                 <Icon type="step-backward" style={{width:50,height:50,fontSize:45}}/>
+                  <Switch defaultChecked onChange={this.onChange} />
                 {/* 测试伪类 */}
                 {/* <div className={`${style.a} ${style.b}`}>hover</div> */}
                 {/* <div className={style.a+" "+style.b}>hover</div> */}

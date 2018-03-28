@@ -85,16 +85,15 @@
   border: 1px solid red;
 }
 /*  */
-.carousel{
+.my-carousel{
   position: absolute;
   top:0;
   left:0;
   width:100%;
 }
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 300px;
-  line-height: 300px;
-  background: #364d79;
-  overflow: hidden;
+.anticon:hover{
+  font-size: 24px;
+  /* margin: 12px 0 16px; */
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
