@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import { Layout, Menu, Icon ,Button} from 'antd';
+import screenfull from 'screenfull';
 import logo from './imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 import pagesController from './content/pagesController';
 // import  moment from 'moment';
@@ -39,17 +40,11 @@ class App extends Component {
   toggleMenu=()=>{
     this.setState({collapsed:!this.state.collapsed})
   }
-  handleFullScreen=()=>{
-      let element=document.getElementById('pageContent');
-      if(element.requestFullscreen) {
-        element.requestFullscreen();
-       } else if(element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-       } else if(element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-       } else if(element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-       }
+  handleFullScreen = () => {
+    if (screenfull.enabled) {
+      console.log('gd')
+        screenfull.request();
+    }
   }
   menuControll=(page)=>{
     let pagekey=page.key;
