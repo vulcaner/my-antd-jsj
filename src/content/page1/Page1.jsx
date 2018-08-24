@@ -1,6 +1,5 @@
 // import React, { Component } from 'react';
 import React from 'react';
-import '../../index.css';
 import TitleValue from '../../components/TitleValue';
 import Ring from '../../components/Ring';
 import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  

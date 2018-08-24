@@ -1,10 +1,9 @@
 // import React, { Component } from 'react';
 import React from 'react';
-import '../../index.css';
 import BaseMap from '../../components/BaseMap';
 // import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 import DataCreater from './DataCreater';
-import 'react-responsive-carousel/lib/styles/carousel.css';
+
 import { Carousel } from 'react-responsive-carousel';
 import png1 from '../../imgs/1.jpeg';
 import png2 from '../../imgs/2.jpeg';

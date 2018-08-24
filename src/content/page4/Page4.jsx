@@ -1,6 +1,5 @@
 // import React, { Component } from 'react';
 import React from 'react';
-import '../../index.css';
 import TitleChart from '../../components/TitleChart';
 import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 import DataCreater from './DataCreater';

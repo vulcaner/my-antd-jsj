@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './index.css';
 import { Layout, Menu, Icon ,Button} from 'antd';
 import screenfull from 'screenfull';
 import logo from './imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
