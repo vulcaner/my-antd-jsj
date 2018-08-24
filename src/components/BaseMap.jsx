@@ -38,7 +38,7 @@ class BaseMap extends Component {
     return true;
   }
   requestMap(mapName) {
-    fetch(window.dominContext.staticPath + '/assets/map/' + mapName + '.json')
+    fetch(window.domainPath.staticPath + '/assets/map/' + mapName + '.json')
       .then(FetchHelper.checkStatus)
       .then(FetchHelper.parseJSON)
       .then((geoJson) => {

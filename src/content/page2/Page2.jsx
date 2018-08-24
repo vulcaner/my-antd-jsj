@@ -44,7 +44,7 @@ class Page2 extends  React.Component{
     }
     render(){
         return (
-            <div id="pageContent" className="animated rotateIn" style={{position:'relative'}}>
+            <div id="pageContent" className="animated zoomIn" style={{position:'relative'}}>
                 <BaseMap className="mapChina" option={this.state.mapOption} mapName={"china"}/> 
            
                     <Carousel className="my-carousel" autoPlay>

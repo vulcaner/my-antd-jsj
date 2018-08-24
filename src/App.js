@@ -41,10 +41,8 @@ class App extends Component {
     this.setState({collapsed:!this.state.collapsed})
   }
   handleFullScreen = () => {
-    if (screenfull.enabled) {
-      console.log('gd')
-        screenfull.request();
-    }
+    let el=document.getElementById('pageContent');
+    screenfull.enabled&&screenfull.request(el);
   }
   menuControll=(page)=>{
     let pagekey=page.key;
