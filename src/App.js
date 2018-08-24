@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state={
       scale:1,
-      collapsed:false,// menu控制
+      collapsed:true,// menu控制
       pagekey:1// content控制
     }
   }
@@ -50,8 +50,7 @@ class App extends Component {
   }
   // 获得当前content
   getSinglePage=(pkey)=>{
-     let child=pagesController[pkey-1].pageComponent;
-     return React.createElement(child);
+     return pagesController[pkey-1]?React.createElement(pagesController[pkey-1]["pageComponent"]):null;
   }
   render() {
     return (
@@ -116,9 +115,7 @@ class App extends Component {
                     {
                       transform:`scale(${this.state.scale})`,
                       WebkitTrasform:`scale(${this.state.scale})`,
-                      msTransform:`scale(${this.state.scale})`,
-                      //WebkitTransition: 'all .5s', // note the capital 'W' here
-                      //msTransition: 'all .5s' // 'ms' is the only lowercase vendor prefix
+                      MozTransform:`scale(${this.state.scale})`
                     }
                   }> 
                 {this.getSinglePage(this.state.pagekey) }

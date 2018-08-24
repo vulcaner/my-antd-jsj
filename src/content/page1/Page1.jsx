@@ -17,23 +17,6 @@ class Page1 extends  React.Component{
     }
     componentWillReceiveProps(){}
     componentDidMount(){
-        // var self=this;
-        // self.serverRequest=$.ajax({
-        //     type:'GET',
-        //     url: window.locationConfig.controlPages.start.address,
-        //     dataType:"json", 
-        //     data : {},
-        //     crossDomain: true, 
-        //     contentType:"application/json",  
-        //     success:function(data){
-        //         var sourse=JSON.parse(JSON.stringify(data));
-        //         // console.log(sourse.hits.hits[0]._source);
-        //         self.upData(sourse.hits.hits[0]._source);
-        //     },
-        //     error:function(e){
-        //         console.log(e);
-        //     }
-        // })
         this.timer=setInterval(()=>this.start(),100);
     }
     start=()=>{
@@ -45,8 +28,8 @@ class Page1 extends  React.Component{
         } 
     }
     componentWillUnmount() {
-        this.timer&&clearInterval(this.timer)
-        // this.serverRequest&&this.serverRequest.abort();
+        this.timer&&clearInterval(this.timer);
+        this.timer=null;
     }
     onChange=(checked)=>{
         console.log(`switch to ${checked}`);
@@ -74,11 +57,8 @@ class Page1 extends  React.Component{
                     borderColor="yellow"
                     borderWidth={2}
                 />
-                 <Icon type="step-backward" style={{width:50,height:50,fontSize:45}}/>
-                  <Switch defaultChecked onChange={this.onChange} />
-                {/* 测试伪类 */}
-                {/* <div className={`${style.a} ${style.b}`}>hover</div> */}
-                {/* <div className={style.a+" "+style.b}>hover</div> */}
+                <Icon type="step-backward" style={{width:50,height:50,fontSize:45}}/>
+                <Switch defaultChecked onChange={this.onChange} />
             </div>
         )
     }
