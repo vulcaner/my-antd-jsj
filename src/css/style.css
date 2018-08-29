@@ -19,7 +19,7 @@
   border-left: 16px solid #f2f2f2;
   border-right: 16px solid #f2f2f2;
   background-color: #fff;
-  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url(./imgs/bg.png);
+  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url("../imgs/bg.png");
   background-size: cover;
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
@@ -41,7 +41,7 @@
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s;
-  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url(./imgs/bg.png);
+  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)), url("../imgs/bg.png");
 }
 .fontS20{
   font-size: 20px;
