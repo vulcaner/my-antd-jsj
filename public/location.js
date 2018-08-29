@@ -1,7 +1,7 @@
 (function (win) {
-    var ip = "10.1.1.90";
-    var port = 8080;
-    var domain = `http:// + ${ ip } + : + ${ port }`;
+    const ip = "10.1.1.90";
+    const port = 8080;
+    const domain = `http:// + ${ ip } + : + ${ port }`;
     win.domainPath = { staticPath: "" };
     win.apiConfig= {
         start:{
