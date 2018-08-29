@@ -35,8 +35,8 @@ class Page1 extends  React.Component{
     }
     render(){
         return (
-            <div id="pageContent" style={{position:"relative"}}>
-                <img className="animated infinite rotateIn"  src={logo} style={{width:"100%",height:"100%"}} alt="SVG"/>
+            <div className="pageContent animated zoomIn" style={{position:"relative"}}>
+                <img className="react-rotate"  src={logo} style={{width:"100%",height:"100%"}} alt="SVG"/>
                 <TitleValue
                     className="animated rotateIn"
                     titleStyle={{fontSize:"20px"}}
@@ -47,7 +47,7 @@ class Page1 extends  React.Component{
                     decimals={5}
                     suffix={`<i style=font-size:20px;color:red>%</i>`}
                 />
-                <Ring className='animated infinite flash ring' 
+                <Ring className='ring' 
                     deg={this.state.deg} 
                     radius={120} 
                     ringWidth={50}
@@ -56,8 +56,11 @@ class Page1 extends  React.Component{
                     borderColor="yellow"
                     borderWidth={2}
                 />
-                <Icon type="step-backward" style={{width:50,height:50,fontSize:45}}/>
-                <Switch defaultChecked onChange={this.onChange} />
+                <div style={{position: "absolute",top:400,left:0}}>
+                    <Icon type="step-backward" style={{width:50,height:50,fontSize:45}}/>
+                    <hr/>
+                    <Switch defaultChecked onChange={this.onChange} />
+                </div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 import React from 'react';
 import TitleChart from '../../components/TitleChart';
-import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
+// import logo from '../../imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
 import DataCreater from './DataCreater';
 import moment from 'moment';
 
@@ -84,12 +84,12 @@ class Page4 extends  React.Component{
     }
     componentWillReceiveProps(){}
     componentDidMount(){
-        console.log(logo)
+        // console.log(logo)
     }
     componentWillUnmount() {}
     render(){
         return (
-            <div id="pageContent" className="animated zoomIn">
+            <div className="pageContent animated lightSpeedIn">
                 <TitleChart
                     style={{color:'#fff',width:'100%',height:400,borderRadius:35,borderBottom:'1px solid gray',boxShadow: "inset 0px 0px 144px 0px rgba(0, 0, 0, 0.63)"}}
                     title={`这是标题<i style="color:red">单位</i>`}

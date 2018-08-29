@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      scale:1,
+      contentScale:1,
       collapsed:true,// menu控制
       pagekey:1// content控制
     }
@@ -18,38 +18,86 @@ class App extends Component {
   componentWillMount(){
    this.autoScale();
   }
-  // 自动获取缩放值
+  componentWillUnmount(){
+    //释放浏览器内存
+    window.removeEventListener('resize',this.autoScale);
+    window.removeEventListener('keydown', this.handleKeyBoard)
+  }
+  // 获得当前content
+  getSinglePage=(pkey)=>{
+    return pagesController[pkey-1]?React.createElement(pagesController[pkey-1]["pageComponent"]):null;
+  }
+  // content自动获取缩放值
   autoScale=()=>{
     let clientW=document.body.clientWidth;
     let clientH=document.body.clientHeight;
     let scaleByWidth=(clientW-200)*0.88/1920;//左侧导航width 200
     let scaleByHeight=(clientH-64)*0.88/1082;//顶部导航height 64
-    let scale=scaleByWidth>scaleByHeight?scaleByHeight:scaleByWidth;
-    this.setState({scale});
+    let contentScale=scaleByWidth>scaleByHeight?scaleByHeight:scaleByWidth;
+    this.setState({contentScale});
   }
-  componentWillReceiveProps(){}
+  // content全屏
+  handleFullScreen = () => {
+    let el=document.getElementById('fullScreenElement');
+    screenfull.enabled&&screenfull.request(el);
+  }
+  handleKeyBoard=(event)=>{
+    let self=this;
+    let e = event || window.event;
+    let k=null;
+    switch(e.keyCode){
+      case 38:
+          k=self.state.pagekey-1;
+          if(k>=1&&k<=pagesController.length){
+            self.menuControll(k);
+          }else if(k===0){
+            self.menuControll(pagesController.length);
+          }
+      break
+
+      case 40:
+          k=self.state.pagekey+1;
+          if(k>=1&&k<=pagesController.length){
+            self.menuControll(k);
+          }else if(k===pagesController.length+1){
+            self.menuControll(1);
+          }
+      break
+
+      case 37:
+          k=self.state.pagekey-1;
+          if(k>=1&&k<=pagesController.length){
+            self.menuControll(k);
+          }else if(k===0){
+            self.menuControll(pagesController.length);
+          }
+      break
+
+      case 39:
+          k=self.state.pagekey+1;
+          if(k>=1&&k<=pagesController.length){
+            self.menuControll(k);
+          }else if(k===pagesController.length+1){
+            self.menuControll(1);
+          }
+      break
+
+      default:
+      break
+    }
+  }
   componentDidMount(){
-    // 监听window窗口变化
     window.addEventListener('resize', this.autoScale);
-  }
-  componentWillUnmount(){
-    // 组件注销时,移除window的resize事件监听,释放浏览器内存
-    window.removeEventListener('resize',this.autoScale);
+    window.addEventListener('keydown', this.handleKeyBoard);
   }
   toggleMenu=()=>{
     this.setState({collapsed:!this.state.collapsed})
   }
-  handleFullScreen = () => {
-    let el=document.getElementById('pageContent');
-    screenfull.enabled&&screenfull.request(el);
-  }
   menuControll=(page)=>{
-    let pagekey=page.key;
+    // console.log(page);
+                        //键盘事件
+    let pagekey=page.key||page;
     this.setState({pagekey});
-  }
-  // 获得当前content
-  getSinglePage=(pkey)=>{
-     return pagesController[pkey-1]?React.createElement(pagesController[pkey-1]["pageComponent"]):null;
   }
   render() {
     return (
@@ -101,23 +149,26 @@ class App extends Component {
               className="fontS20 rt"
               style={{lineHeight:"64px",marginRight:"20px",cursor:"pointer"}}
               type='laptop'
-              title={`F11大屏^_^`}
+              title={`F11全屏^_^`}
               onClick={this.handleFullScreen}
             />
           </Header>
           {/* content>page* */}
-          <Content id="contenter">
+          <Content id="flexBox">
               {/* 缩放元素 */}
               <div 
-                  id='scale' 
+                  id='contentScale' 
                   style={
                     {
-                      transform:`scale(${this.state.scale})`,
-                      WebkitTrasform:`scale(${this.state.scale})`,
-                      MozTransform:`scale(${this.state.scale})`
+                      WebkitTrasform:`scale(${this.state.contentScale})`,
+                      MozTransform:`scale(${this.state.contentScale})`,
+                      transform:`scale(${this.state.contentScale})`
                     }
                   }> 
-                {this.getSinglePage(this.state.pagekey) }
+                  {/* 全屏元素 */}
+                  <div id='fullScreenElement' >
+                    {this.getSinglePage(this.state.pagekey) }
+                  </div>
               </div>
                 {/* {
                   React.createElement(

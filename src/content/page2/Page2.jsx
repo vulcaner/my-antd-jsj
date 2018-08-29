@@ -21,9 +21,8 @@ class Page2 extends  React.Component{
     componentWillUnmount() {}
     render(){
         return (
-            <div id="pageContent" className="animated zoomIn" style={{position:'relative'}}>
-                <BaseMap className="mapChina" option={this.state.mapOption} mapName={"china"}/> 
-           
+            <div className="pageContent animated bounceIn" style={{position:'relative'}} >
+                    <BaseMap className="mapChina" option={this.state.mapOption} mapName={"china"}/> 
                     <Carousel className="my-carousel" autoPlay>
                         <div>
                             <img src={png1} alt=""/>
