@@ -1,5 +1,5 @@
 function randomData() {
-    return parseInt(Math.random()*(6000-0+1)+0);
+    return parseInt(Math.random()*(6000-0+1)+0,10);
 }
 const DataCreater = {
     mapOption:(arrData)=>{
