@@ -141,6 +141,9 @@ const DataCreater = {
                     mapType: 'china',
                     roam: false,
                     label:{
+                        normal:{
+                            show:true,
+                        },
                         emphasis: {
                             show: true,
                             color:"#fff"

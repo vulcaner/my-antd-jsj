@@ -15,9 +15,6 @@ class App extends Component {
       pagekey:1// content控制
     }
   }
-  componentWillMount(){
-   this.autoScale();
-  }
   componentWillUnmount(){
     //释放浏览器内存
     window.removeEventListener('resize',this.autoScale);
@@ -87,6 +84,7 @@ class App extends Component {
     }
   }
   componentDidMount(){
+    this.autoScale();
     window.addEventListener('resize', this.autoScale);
     window.addEventListener('keydown', this.handleKeyBoard);
   }
