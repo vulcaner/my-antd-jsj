@@ -23,16 +23,15 @@ const DataCreater = {
                     {min:4000, max: 5000},
                     {min:5000, max: 6000},
                 ],
-                inverse:true,
                 itemGap:0,
                 itemWidth: 50,
-                // align:"right",
-                text: ['0','6000'], 
+                align:"right",
+                text: ['6000','0'], 
                 orient:'horizontal',          // 文本，默认为数值文本
                 // showLabel:true,
                 calculable: true,
                 inRange: {
-                    color: ['#163d71','#3f6496','#6189bf','#88a9d5','#afc0d7','#fff']
+                    color: ['#ffffff','#afc0d7','#88a9d5','#6189bf','#3f6496','#163d71']
                 },
                 textStyle:{
                     color:'#fff',
@@ -158,9 +157,9 @@ const DataCreater = {
                         },
                     },
                     data:[
-                        {name: '北京',value: randomData() },
+                        {name: '北京',value: 6000 },
                         {name: '天津',value: randomData() },
-                        {name: '上海',value: randomData() },
+                        {name: '上海',value: 3333 },
                         {name: '重庆',value: randomData() },
                         {name: '河北',value: randomData() },
                         {name: '河南',value: randomData() },
@@ -174,7 +173,7 @@ const DataCreater = {
                         {name: '江苏',value: randomData() },
                         {name: '浙江',value: randomData() },
                         {name: '江西',value: randomData() },
-                        {name: '湖北',value: randomData() },
+                        {name: '湖北',value: 5555 },
                         {name: '广西',value: randomData() },
                         {name: '甘肃',value: randomData() },
                         {name: '山西',value: randomData() },
