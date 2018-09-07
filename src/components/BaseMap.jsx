@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import 'whatwg-fetch';
 import R from 'ramda';
 import FetchHelper from '../utils/FetchHelper';
+import echarts from 'echarts';
 import Chart from './Chart';
-import echarts from 'echarts/lib/echarts';
-import 'echarts/lib/chart/map';
-
 class BaseMap extends Component {
   constructor(props) {
     super(props);
