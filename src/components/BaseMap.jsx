@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import 'whatwg-fetch';
 import R from 'ramda';
 import FetchHelper from '../utils/FetchHelper';
@@ -71,5 +72,8 @@ class BaseMap extends Component {
     }
   }
 }
-
+BaseMap.propTypes = {
+  option: PropTypes.object.isRequired,
+  mapName: PropTypes.string.isRequired
+}
 export default BaseMap;

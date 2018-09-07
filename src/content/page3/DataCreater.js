@@ -1,8 +1,5 @@
-function randomData() {
-    return parseInt(Math.random()*(6000-0+1)+0,10);
-}
 const DataCreater = {
-    mapOption:(arrData)=>{
+    mapOption:(arr1,arr2,arr3)=>{
         return {
             tooltip: {
                 trigger: 'item'
@@ -64,12 +61,7 @@ const DataCreater = {
                     type: 'scatter',
                     zlevel:2,
                     coordinateSystem: 'geo',
-                    data: [
-                        {name:"北京",value:[116.40,39.93,100]},
-                        {name:"上海",value:[121.48,31.22,100]},
-                        {name:"深圳",value:[114.07,22.62,100]},
-                        {name:"钓鱼岛",value:[123.481151,25.750151,100]}
-                    ],
+                    data:arr1,
                     symbolSize: function (val) {
                         return val[2] / 10;
                     },
@@ -128,10 +120,7 @@ const DataCreater = {
                             opacity :1,
                         }  
                     },
-                    data: [
-                        {name:'上海',value:[121.48,31.22,3333]},
-                        {name:'武汉',value:[114.31,30.52,5555]}
-                    ]
+                    data:arr2,
                 },
                 //区域    
                 {
@@ -156,42 +145,7 @@ const DataCreater = {
                             shadowColor:"#040404"
                         },
                     },
-                    data:[
-                        {name: '北京',value: 6000 },
-                        {name: '天津',value: randomData() },
-                        {name: '上海',value: 3333 },
-                        {name: '重庆',value: randomData() },
-                        {name: '河北',value: randomData() },
-                        {name: '河南',value: randomData() },
-                        {name: '云南',value: randomData() },
-                        {name: '辽宁',value: randomData() },
-                        {name: '黑龙江',value: randomData() },
-                        {name: '湖南',value: randomData() },
-                        {name: '安徽',value: randomData() },
-                        {name: '山东',value: randomData() },
-                        {name: '新疆',value: randomData() },
-                        {name: '江苏',value: randomData() },
-                        {name: '浙江',value: randomData() },
-                        {name: '江西',value: randomData() },
-                        {name: '湖北',value: 5555 },
-                        {name: '广西',value: randomData() },
-                        {name: '甘肃',value: randomData() },
-                        {name: '山西',value: randomData() },
-                        {name: '内蒙古',value: randomData() },
-                        {name: '陕西',value: randomData() },
-                        {name: '吉林',value: randomData() },
-                        {name: '福建',value: randomData() },
-                        {name: '贵州',value: randomData() },
-                        {name: '广东',value: randomData() },
-                        {name: '青海',value: randomData() },
-                        {name: '西藏',value: randomData() },
-                        {name: '四川',value: randomData() },
-                        {name: '宁夏',value: randomData() },
-                        {name: '海南',value: randomData() },
-                        {name: '台湾',value: randomData() },
-                        {name: '香港',value: randomData() },
-                        {name: '澳门',value: randomData() }
-                    ]
+                    data:arr3
                 },
             ],
             animationEasing: 'backIn',

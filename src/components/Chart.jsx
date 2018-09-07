@@ -51,13 +51,12 @@ class Chart extends Component {
       );
       if (!R.equals(nextProps, this.props)) {
         this.chart.setOption(nextProps.option);
-        this.chart.hideLoading();
       }else{
         let tempOp = this.chart.getOption();
         this.chart.clear();
         this.chart.setOption(tempOp);
-        this.chart.hideLoading(); 
       }
+      this.chart.hideLoading(); 
   }
   render() {
     return (
