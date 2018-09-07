@@ -1,5 +1,6 @@
 #by LXC 
 #静态资源压缩:src=>import logo from '../../imgs/logo.svg';
+#根路径 引入 /
 yarn start=>run
 yarn  build =>Creating an optimized production build...
 ###

@@ -237,7 +237,7 @@ const DataCreater = {
                         left: ((geoCoordMap["陆港集团"][0] + 18) / 198 * 0.55-15/1104)*100 + "%",
                         top: ((90 - geoCoordMap["陆港集团"][1]) /150-30/700)*100 + "%",
                         style: {
-                            image: window.domainPath.staticPath + '/assets/images/start/location.png',
+                            image: '/assets/images/start/location.png',
                             width: 30,
                             height: 30
                         },
@@ -328,7 +328,7 @@ const DataCreater = {
                         show: true,
                         period: 10,
                         //symbol:'pin',
-                        symbol: 'image://' + window.domainPath.staticPath + '/assets/images/start/rock.png',
+                        symbol: 'image:///assets/images/start/rock.png',
                         // symbolSize:[8,10],
                         symbolSize:[9,20],
                         // trailLength:0.2,
@@ -352,7 +352,7 @@ const DataCreater = {
                     type: 'scatter',
                     coordinateSystem: 'geo',
                     // symbol:'pin',
-                    symbol: 'image://' + window.domainPath.staticPath + '/assets/images/common/pin.png',
+                    symbol: 'image:///assets/images/common/pin.png',
                     symbolSize: function (val) {
                         //concat=[经度，纬度，value]
                         return val[2];

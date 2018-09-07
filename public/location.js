@@ -2,7 +2,6 @@
     const IP = "10.1.1.90";
     const PORT = 8080;
     const DOMAIN = `http:// + ${ IP } + : + ${ PORT }`;
-    win.domainPath = { staticPath: "" };
     win.apiConfig= {
         start:{
             name: '',

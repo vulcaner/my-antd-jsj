@@ -97,7 +97,7 @@ const DataCreater = {
                     zlevel:1,
                     type: 'scatter',
                     coordinateSystem: 'geo',
-                    symbol: 'image://' + window.domainPath.staticPath + '/assets/images/pin.png',
+                    symbol: 'image:///assets/images/pin.png',
                     symbolOffset: [0,"-35%"],
                     symbolSize: [76,91],
                     label: {
