@@ -39,7 +39,7 @@ class Page1 extends  React.Component{
     render(){
         return (
             <div className="pageContent animated zoomIn" style={{position:"relative"}}>
-                <img className="react-rotate"  src={"/assets/images/pin.png"} ref={node=>{this.img=node;}} onError={this.handleErr} style={{width:"100%",height:"100%"}} alt="SVG"/>
+                <img className="react-rotate"  src={"/assets/images/pin.png"} ref={node=>{this.img=node;}} onError={this.handleErr} style={{width:"50%",height:"50%"}} alt="SVG"/>
                 <TitleValue
                     className="animated rotateIn"
                     titleStyle={{fontSize:"20px"}}
