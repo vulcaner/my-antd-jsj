@@ -1,8 +1,8 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import App from './App';
 import Login from './Login';
-class Main extends Component {
+class Main extends React.Component {
   constructor(props){
     super(props);
     this.state={

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Menu, Icon ,Button} from 'antd';
 import screenfull from 'screenfull';
 import logo from './imgs/logo.svg'; // 告诉webpack 这个js文件使用这张图片  
@@ -6,7 +6,7 @@ import pagesController from './content/pagesController';
 // import  moment from 'moment';
 const { Header, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
-class App extends Component {
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
