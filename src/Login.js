@@ -2,15 +2,27 @@
 import React from 'react';
 import bg from './imgs/bg.png'; 
 // import md5 from 'blueimp-md5';
+//1、导入 injectIntl
+import { injectIntl,FormattedMessage } from 'react-intl'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 const FormItem = Form.Item;
 class Login extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      please:"请输入"
+    }
+  }
+  componentDidMount(){
+      // 3、使用 intl 对象
+      const {intl} = this.props;
+      console.log(intl);
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        alert('验证通过');
         this.props.loginCallBack("false");
       }
     });
@@ -39,18 +51,55 @@ class Login extends React.Component {
               valuePropName: 'checked',
               initialValue: true,
             })(
-              <Checkbox>Remember me</Checkbox>
+              <Checkbox>
+                 <FormattedMessage 
+                  　　id="Login.rember"
+                      // description='IS Login.rember'
+                      // defaultMessage=''
+                  />
+              </Checkbox>
             )}
-            <a className="login-form-forgot" href="" style={{float:'right'}}>Forgot password</a>
+            <a className="login-form-forgot" href="" style={{float:'right'}}>
+                  <FormattedMessage 
+                  　　id="Login.forPwd"
+                      // description='IS Login.forPwd'
+                      // defaultMessage=''
+                  />
+            </a>
             <Button type="primary" htmlType="submit" className="login-form-button" style={{width:"100%"}}>
-              Log in
+                  <FormattedMessage 
+                  　　id="Login.login"
+                      // description='IS Login.login'
+                      // defaultMessage=''
+                  />
             </Button>
-            Or <a href="">register now!</a>
+            <a href="">
+                  <FormattedMessage 
+                  　　id="Login.reg"
+                      // description='IS Login.reg'
+                      // defaultMessage=''
+                  />
+            </a>
           </FormItem>
         </Form>
+        <FormattedMessage 
+        　　id="Login.user"
+            // description='IS Login.user'
+            defaultMessage='{please} Username '
+            values={{please:<i style={{color:"red"}}>{this.state.please}(state中)</i>}}
+        />
+        <br/>
+        <FormattedMessage 
+        　　id="Login.pwd"
+        // 　　description='IS Login.pwd'
+            defaultMessage='{please} Password '
+            values={{please:<i style={{color:"red"}}>{this.state.please}(state中)</i>}}
+        />
       </div>
     );
   }
-}
+};
 const LoginForm = Form.create()(Login);
-export default LoginForm;
+// export default LoginForm;
+//2、在组件中注入
+export default injectIntl(LoginForm);
