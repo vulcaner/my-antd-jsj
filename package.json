@@ -5,10 +5,11 @@
   "scripts": {
     "start": "react-app-rewired start --open",
     "predeploy": "npm run build",
-    "build": "react-app-rewired build --dest docs",
+    "deploy": "gh-pages -d build",
+    "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom"
   },
-  "homepage": "http://myname.github.io/myapp",
+  "homepage": "https://vulcaner.github.io/my-antd-jsj/",
   "dependencies": {
     "amcharts3": "github:amcharts/amcharts3",
     "animate.css": "^3.5.2",
