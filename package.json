@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -b gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject64464": "react-scripts eject"
   },
