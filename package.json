@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-app-rewired start --open",
-    "build": "react-app-rewired build",
+    "predeploy": "npm run build",
+    "build": "react-app-rewired build --dest docs",
     "test": "react-app-rewired test --env=jsdom"
   },
   "homepage": "http://myname.github.io/myapp",
